@@ -12,6 +12,23 @@ create table 학생
 소속학과 varchar(20) null,
 primary key(학번) );
 
+create table 과목
+(과목번호 char(4) not null primary key,
+이름 varchar(20) not null,
+강의실 char(3) not null,
+개설학과 varchar(20) not null,
+시수 int not null);
+
+create table 수강
+(학번 char(6) not null,
+과목번호 char(4) not null,
+신청날짜 date not null,
+중간성적 int null default 0,
+기말성적 int null default 0,
+평가성적 char(1) null,
+primary key(학번, 과목번호));
+
+
 insert into 학생
 value ('s001', '김연아', '서울 서초', 4, 23, '여', '010-1111-2222', '컴퓨터');
 insert into 학생
@@ -56,3 +73,4 @@ insert into 수강
 values ('s003', 'c001', '2020-03-03', 81, 82, 'B');
 insert into 수강
 values ('s004', 'c002', '2020-03-05', 93, 95, 'A');
+
